@@ -1,5 +1,7 @@
 # Create a User Registration form.
 
+Hosted at: https://andreibtc84.github.io/formApi-validation/
+
 It should have an Email field and a password field. When the user submits the form, create the user (i.e. https://reqres.in/api/users). Display an error message if the request fails.
 
 # Stretch: Add form validation
