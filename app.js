@@ -58,8 +58,8 @@ const provideFeedback = (data) => {
   userFeedback.classList.add("outputSucess");
   userFeedback.innerHTML = `<h3>Yey! Entry created successfully:</h3>
       <ul>
-        <li>Id: ${data.email}</li>
-        <li>Email: ${data.id}</li>
+        <li>Id: ${data.id}</li>
+        <li>Email: ${data.email}</li>
         <li>Created at: ${new Date(data.createdAt)}</li>
       </ul>`;
 };
