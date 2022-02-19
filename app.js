@@ -44,14 +44,27 @@ const submitForm = () => {
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
-      userFeedback.innerText = "Yey! Entry created successfully";
+      provideFeedback(data);
     })
+
     .catch((error) => {
       console.log(error);
     });
 };
 
-// Cleans form
+// Gives user positive feedback
+
+const provideFeedback = (data) => {
+  userFeedback.classList.add("outputSucess");
+  userFeedback.innerHTML = `<h3>Yey! Entry created successfully:</h3>
+      <ul>
+        <li>Id: ${data.email}</li>
+        <li>Email: ${data.id}</li>
+        <li>Created at: ${new Date(data.createdAt)}</li>
+      </ul>`;
+};
+
+// Cleans form fields
 const cleanFields = () => {
   email.value = "";
   password.value = "";
@@ -60,6 +73,7 @@ const cleanFields = () => {
 // Handles submit event
 
 const handleSubmit = (e) => {
+  userFeedback.classList.remove("outputSucess");
   charCheck(password.value) === false
     ? (userFeedback.innerText = "Invalid password!")
     : validateEmail() === false

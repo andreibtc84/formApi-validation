@@ -47,7 +47,10 @@ input {
     padding: 30px;
     font-size: 1.5rem;
     color: rgb(118, 0, 0);
-    font-weight: bold;
-    text-transform: uppercase;
+}
+.outputSucess {
+    padding: 30px;
+    font-size: 1.5rem;
+    color: rgb(59, 118, 0);
 }
 
