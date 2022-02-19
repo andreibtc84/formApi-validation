@@ -14,3 +14,4 @@ Add frontend validation to your form before you submit it:
 - must have at least one uppercase letter, lowercase letter, number, and a special character (i.e. @!£$%^&\*()\_+€#-?/[]{};:'",.<>~)
 - Email must be an email address
 - If the form fails validation, do not submit it to the creation endpoint, and show an error to the user.
+- Streched to provide the user with info on success with returned data from the API. + some styling
