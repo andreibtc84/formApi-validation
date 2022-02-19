@@ -10,7 +10,7 @@ const userFeedback = document.querySelector(".output");
 
 const atLeast8 = (str) => (str.length >= 8 ? true : false);
 
-// Has at least one lowercase and uppercase letter, number, and a special character
+// Validate Password. Has at least one lowercase and uppercase letter, number, and a special character
 
 const charCheck = (str) => {
   return (
@@ -21,10 +21,16 @@ const charCheck = (str) => {
   );
 };
 
+// Validate email
+
+const validateEmail = () => {
+  let re = /\S+@\S+\.\S+/;
+  return re.test(email.value);
+};
+
 // Submits form to API endpoint
 
-const submitForm = (e) => {
-  e.preventDefault();
+const submitForm = () => {
   fetch(`https://reqres.in/api/users`, {
     method: "POST",
     body: JSON.stringify({
@@ -38,6 +44,7 @@ const submitForm = (e) => {
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
+      userFeedback.innerText = "Yey! Entry created successfully";
     })
     .catch((error) => {
       console.log(error);
@@ -53,10 +60,11 @@ const cleanFields = () => {
 // Handles submit event
 
 const handleSubmit = (e) => {
-  console.log(charCheck(password.value));
   charCheck(password.value) === false
     ? (userFeedback.innerText = "Invalid password!")
-    : submitForm(e);
+    : validateEmail() === false
+    ? (userFeedback.innerText = "Invalid email!")
+    : submitForm();
   e.preventDefault();
   cleanFields();
 };
