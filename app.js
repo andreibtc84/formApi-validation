@@ -3,6 +3,7 @@ console.log("Connected!");
 const email = document.querySelector(".email");
 const password = document.querySelector(".password");
 const submit = document.querySelector(".submit");
+const userFeedback = document.querySelector(".output");
 
 // Validation FUNCTIONS:
 // At least 8 chars
@@ -19,6 +20,8 @@ const charCheck = (str) => {
     /[0-9]/g.test(str)
   );
 };
+
+// Submits form to API endpoint
 
 const submitForm = (e) => {
   e.preventDefault();
@@ -41,4 +44,21 @@ const submitForm = (e) => {
     });
 };
 
-submit.addEventListener("click", submitForm);
+// Cleans form
+const cleanFields = () => {
+  email.value = "";
+  password.value = "";
+};
+
+// Handles submit event
+
+const handleSubmit = (e) => {
+  console.log(charCheck(password.value));
+  charCheck(password.value) === false
+    ? (userFeedback.innerText = "Invalid password!")
+    : submitForm(e);
+  e.preventDefault();
+  cleanFields();
+};
+
+submit.addEventListener("click", handleSubmit);
